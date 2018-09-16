@@ -39,15 +39,17 @@ class FitForm extends Component {
 	}
 
 	renderExercise(workout) {
-		var exercise = workout && workout.exercises ? workout.exercises[0] : null;
-		if (exercise) {
-			return(
-			<div>
-				id: {exercise.id}
-				name: {exercise.name}
-				workout: {exercise.workoutId}
-			</div>
-		)
+		var exercises = workout && workout.exercises ? workout.exercises : null;
+		if (exercises) {
+			return exercises.map((exercise) => {
+				return(
+				<div>
+					id: {exercise.id}
+					name: {exercise.name}
+					workout: {exercise.workoutId}
+				</div>
+				)
+			});
 		} else {
 			return(<div>Loading...</div>)
 		}
